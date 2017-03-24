@@ -3,7 +3,9 @@ import java.util.*;
 
 public class DictPart
 {
-	public DictPart(ArrayList<String> arr){
+	public DictPart(ArrayList<String> arr,String sname, String sdirStr){
+		name=sname;
+		dirStr=sdirStr;
 		String s=new String();
 		System.out.println("\n===");
 		String []spls=null;
@@ -29,5 +31,6 @@ public class DictPart
 	}
 	public ArrayList<String> eng=new ArrayList <>();
 	public ArrayList<String> rus=new ArrayList <>();
-	public String dirAsStr=new String();
+	public String dirStr=new String();
+	String name="";
 }

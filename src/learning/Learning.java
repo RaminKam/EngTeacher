@@ -54,30 +54,6 @@ public class Learning
 
 		rus=dp.rus;
 		eng=dp.eng;
-		
-//		String s=new String();
-//		System.out.println("\n===");
-//		String []spls=null;
-//		for(int g=0;g<arr.size();g++){
-//			String t=arr.get(g);
-//			spls =t.split("-");
-//			//if string have not word pairs:
-//			//плохой стиль - нкжны свои классы
-//			//исключений
-//			
-//			if (spls.length == 2)
-//			{
-//
-//				for (int v=0;v < spls.length;v++)
-//				{
-//					System.out.print(v + "-" + "{" + spls[v] + "}");
-//				}
-//				eng.add(spls[0]);
-//				rus.add(spls[1]);
-//			}
-//
-//		}
-	//	System.out.println(Arrays.toString(eng.toArray()));
 
 		
 		int mode=(int)(Math.random()*10)%2;

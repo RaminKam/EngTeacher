@@ -5,15 +5,18 @@ import learning.Learning;
 import learning.*;
 import filework.*;
 import java.util.*;
+import java.io.File;
+
 
 public class Main
 {
 	public static void main(String[] args)
 	{
+		
 		DictPart dp1=null;
-		FilesSearcher fs=new FilesSearcher();
+		FilesSearcher fs=new FilesSearcher(null);
 		ArrayList<ArrayList<String>> dictsStrings= fs.getDicts();
-		dp1=new DictPart(dictsStrings.get(0));
+		dp1=new DictPart(dictsStrings.get(0), null, null);
 		Learning ln=new Learning();
 		ln.genPairs(dp1);
 		
