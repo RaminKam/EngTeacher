@@ -8,6 +8,8 @@ public class FilesSearcher
 {
 	String searchDir="//storage//emulated//0//SimpleNotepad2";//директория, где должны находиться все части словаря
 	ArrayList<ArrayList<String>> dicts=new ArrayList<>();
+	ArrayList<String> fDirs=new ArrayList<>();
+	ArrayList<String> fNames=new ArrayList<>();
 	public FilesSearcher(String ssearchDir){
 		if(ssearchDir!=null)
 			searchDir=ssearchDir;
@@ -17,11 +19,20 @@ public class FilesSearcher
 		for(File b:fls){
 			System.out.println(b.getName());
 			System.out.println(b.lastModified());
+			//fNames.add(b.getName());
+			//fDirs.add(b.toString());
+			//dicts.add(ReadsDictFile.readFileThere(b.toString()));
 		}
 		dicts.add(ReadsDictFile.readFileThere(null));
 	}
 	public ArrayList<ArrayList<String>>getDicts(){
 		return dicts;
+	}
+	public ArrayList<String> getFDirs(){
+		return fDirs;
+	}
+	public ArrayList<String> getFNames(){
+		return fNames;
 	}
 	
 	

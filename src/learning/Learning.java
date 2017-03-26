@@ -5,52 +5,39 @@ public class Learning
 {
 	static final int time1=3000;
 	static final int time2=1000;
-	String fdir="//storage//emulated//0//SimpleNotepad2//dict-[01-02-2016].txt";  //1490126478692.txt";  //dict-[01-02-2016].txt" ;
-	ArrayList<String> arr = new ArrayList<>();
-	ArrayList <String> eng=new ArrayList<>();
-	ArrayList <String> rus=new ArrayList<>();
+	//String fdir="//storage//emulated//0//SimpleNotepad2//dict-[01-02-2016].txt";  //1490126478692.txt";  //dict-[01-02-2016].txt" ;
+	
 	
 	public Learning(){
 
 	}
-//	public void readFileThere(){
-//		try{
-//			FileReader fstr=new FileReader(fdir);
-//			arr = new ArrayList<>();
-//			int ch=fstr.read();
-//
-//			String strfor=new String();
-//			while(ch!=-1){
-//				//System.out.print((char)ch);
-//				if((char)ch=='\n'){
-//					arr.add(strfor);
-//					System.out.println(":"+strfor);
-//					strfor=new String();
-//				}else {
-//					strfor=strfor+(char)ch;
-//				}
-//				ch=fstr.read();
-//			}
-//			arr.add(strfor);
-//			System.out.println(":"+strfor+":");
-//			System.out.println("size="+arr.size());
-//			for(int g=0;g<arr.size();g++){
-//				System.out.print(arr.get(g));
-//			}
-//			//System.out.println();
-//			for(int y=0;y<arr.get(1).length();y++){
-//				//System.out.println((int)arr.get(1).charAt(y));
-//			}
-//			//System.out.println("\nhere"+arr.get(1).length());
-//			fstr.close();
-//		}catch(Exception ex){
-//			System.out.println(ex);
-//		}
-//
-//		
-//		
-//	}
+	public void makeShowedSequence(Dictionary dictionary){
+		int seqLen=12;
+		ArrayList<Integer> ms=dictionary.getAllMetrics();
+		
+		int sumMetrics=0;
+		for(Integer i:ms){
+			sumMetrics+=i;
+		}
+		double[] pers=new double[ms.size()];
+		
+		int lens[]=new int[ms.size()];
+		
+		for(int i=0;i<ms.size();i++){
+			pers[i]=(double)(ms.get(i))/(double)(sumMetrics)*100;
+			lens[i]=(int)(seqLen*pers[i]*100);
+
+		}
+		
+	}
+	public void rememberWordsCase1(){
+		
+	}
+
 	public void genPairs(DictPart dp){
+		ArrayList<String> arr = new ArrayList<>();
+		ArrayList <String> eng=new ArrayList<>();
+		ArrayList <String> rus=new ArrayList<>();
 
 		rus=dp.rus;
 		eng=dp.eng;

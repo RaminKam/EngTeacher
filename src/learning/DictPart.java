@@ -33,4 +33,8 @@ public class DictPart
 	public ArrayList<String> rus=new ArrayList <>();
 	public String dirStr=new String();
 	String name="";
+	int metric=(int)(Math.random()*1000)%67;
+	public int getMetric(){
+		return metric;
+	}
 }
