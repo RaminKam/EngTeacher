@@ -28,9 +28,24 @@ public class Learning
 			lens[i]=(int)(seqLen*pers[i]*100);
 
 		}
+		System.out.println("ending of makeShowedSequence");
+		int realSeqLen=0;
+		for(int y=0;y<lens.length;y++){
+			realSeqLen+=lens[y];
+		}
+		int[] indOfPart=new int[realSeqLen];
+		int[] indOfWord=new int[realSeqLen];
+		
+		for(int i=0, pi=0;i<realSeqLen && pi <ms.size();i+=lens[pi], pi++){
+			for(int j=0;j<lens[pi];j++){
+				indOfPart[i+j]=6;
+				indOfWord[i+j]=8;
+			}
+		}
 		
 	}
-	public void rememberWordsCase1(){
+	public void rememberWordsCase1(Dictionary dictionary){
+		
 		
 	}
 
