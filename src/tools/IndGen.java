@@ -21,6 +21,19 @@ public class IndGen
 //			}
 //		}
 //	}
+	
+	public static ArrayList<IndGen> makeGenArr(ArrayList<Integer> szs){
+		ArrayList<IndGen> maked=new ArrayList<>();
+		for(Integer i:szs){
+			try{
+			maked.add(new IndGen(i));
+			}catch(Exception ex){
+				ex.printStackTrace();
+			}
+		}
+		return maked;
+	}
+	
 	ArrayList<Integer> arr=new ArrayList<Integer>();
 	public IndGen(int smaxNumber) throws Exception{
 		if(smaxNumber<1)

@@ -1,6 +1,7 @@
 package learning;
 import java.util.*;
 import java.io.*;
+import tools.*;
 public class Learning
 {
 	static final int time1=3000;
@@ -35,13 +36,23 @@ public class Learning
 		}
 		int[] indOfPart=new int[realSeqLen];
 		int[] indOfWord=new int[realSeqLen];
-		
+		ArrayList<IndGen> indGens=IndGen.makeGenArr(dictionary.getAllPartSizes());
 		for(int i=0, pi=0;i<realSeqLen && pi <ms.size();i+=lens[pi], pi++){
 			for(int j=0;j<lens[pi];j++){
-				indOfPart[i+j]=6;
-				indOfWord[i+j]=8;
+				indOfPart[i+j]=pi;
+				try{
+				indOfWord[i+j]=indGens.get(pi).getInd();
+				}catch(Exception exx){
+					exx.printStackTrace();
+				}
 			}
+			
 		}
+		ArrayList<int[]> indexes=new ArrayList();
+		for(int a :indOfPart){
+			//indexes.add(new int{});
+		}
+		
 		
 	}
 	public void rememberWordsCase1(Dictionary dictionary){

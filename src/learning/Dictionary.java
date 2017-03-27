@@ -19,4 +19,12 @@ public class Dictionary
 		}
 		return ms;
 	}
+	public ArrayList<Integer> getAllPartSizes(){
+		ArrayList<Integer> szs=new ArrayList<>();
+		for(DictPart p:parts){
+			szs.add(p.getWordsNumber());
+		}
+		
+		return szs;
+	}
 }

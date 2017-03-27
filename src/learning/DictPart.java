@@ -37,4 +37,7 @@ public class DictPart
 	public int getMetric(){
 		return metric;
 	}
+	public int getWordsNumber(){
+		return eng.size();
+	}
 }
