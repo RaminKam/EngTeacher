@@ -19,11 +19,11 @@ public class FilesSearcher
 		for(File b:fls){
 			System.out.println(b.getName());
 			System.out.println(b.lastModified());
-			//fNames.add(b.getName());
-			//fDirs.add(b.toString());
-			//dicts.add(ReadsDictFile.readFileThere(b.toString()));
+			fNames.add(b.getName());
+			fDirs.add(b.toString());
+			dicts.add(ReadsDictFile.readFileThere(b.toString()));
 		}
-		dicts.add(ReadsDictFile.readFileThere(null));
+		//dicts.add(ReadsDictFile.readFileThere(null));
 	}
 	public ArrayList<ArrayList<String>>getDicts(){
 		return dicts;

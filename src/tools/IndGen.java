@@ -43,9 +43,11 @@ public class IndGen
 	}
 	int maxNumber=0;
 	public int getInd() throws Exception{
+		if(arr.size()==maxNumber)
+			throw new Exception("error gen ind=all inds used");
 		int g=((int)(Math.random()*1000)%maxNumber);
 		
-		while (arr.contains(g)){
+		while (arr.contains(g)&&arr.size()!=maxNumber){
 			
 			g=((int)(Math.random()*1000)%maxNumber);
 			if(arr.size()==maxNumber){

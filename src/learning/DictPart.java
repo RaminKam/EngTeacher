@@ -38,6 +38,7 @@ public class DictPart
 		return metric;
 	}
 	public int getWordsNumber(){
+		//System.out.println("\n("+eng.size()+")");
 		return eng.size();
 	}
 }
