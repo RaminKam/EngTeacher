@@ -24,12 +24,12 @@ public class Main
 			dictionary.addDictPart(dp);
 		}
 		System.out.println("\n");
-		System.out.println(dictionary);
+		//System.out.println(dictionary);
 		
 		//dp1=new DictPart(dictsStrings.get(0), null, null);
 		
 		Learning ln=new Learning();
-		ln.rememberWordsCase1(dictionary);
+		ln.rememberWordsCase1(dictionary, Learning.LearnType.MIXED);
 		//ln.genPairs(dp1);
 		
 		System.out.println("\nend");

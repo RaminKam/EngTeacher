@@ -13,7 +13,7 @@ public class Learning
 
 	}
 	public ArrayList<int[]> makeShowedSequence(Dictionary dictionary){
-		int seqLen=12;
+		int seqLen=9;
 		ArrayList<Integer> ms=dictionary.getAllMetrics();
 		
 		int sumMetrics=0;
@@ -26,9 +26,10 @@ public class Learning
 		int lens[]=new int[ms.size()];        //длины на каждую часть
 		
 		for(int i=0;i<ms.size();i++){
-			pers[i]=(double)(ms.get(i))/(double)(sumMetrics)*100;
-			lens[i]=(int)(seqLen*pers[i]*100);
-			System.out.println("*"+lens[i]+"*");
+			pers[i]=(double)(ms.get(i))/(double)(sumMetrics);
+			
+			lens[i]=(int)(seqLen*pers[i]);
+			//System.out.println("*"+lens[i]+"*");
 			if(dictionary.getAllPartSizes().get(i)<lens[i]){
 				lens[i]=dictionary.getAllPartSizes().get(i);
 			}
@@ -64,10 +65,64 @@ public class Learning
 		return indexes;
 		
 	}
-	public void rememberWordsCase1(Dictionary dictionary){
+	public enum LearnType{ONLYENG,ONLYRUS,MIXED};
+	public void rememberWordsCase1(Dictionary dictionary, LearnType sltp){
+	
+		LearnType ltp=null;
+		if(sltp==null)
+			ltp=LearnType.ONLYRUS;
+		else 
+			ltp=sltp;
+		
 		ArrayList<int[]> indexes=makeShowedSequence(dictionary);
 		for(int[] el:indexes){
-			System.out.println(el[0]+"-"+el[1]);
+			int i=el[0];
+			int j=el[1];
+			if(ltp==LearnType.ONLYENG)
+			{
+				System.out.println(dictionary.getPart(i).eng.get(j));
+				System.out.print(dictionary.getPart(i).rus.get(j));
+					
+			}
+			if(ltp==LearnType.ONLYRUS){
+				System.out.print(dictionary.getPart(i).rus.get(j));
+				System.out.println(dictionary.getPart(i).eng.get(j));
+			}
+			if(ltp==LearnType.MIXED){
+				int rann=(int)(Math.random()*100)%2;
+				if (rann == 0)
+				{
+					System.out.print(dictionary.getPart(i).rus.get(j));
+					
+					try
+					{
+						Thread.currentThread().sleep(time1);
+					}
+					catch (Exception exx1)
+					{}
+					System.out.println(dictionary.getPart(i).eng.get(j));
+				}
+				else
+				{
+					System.out.print(dictionary.getPart(i).eng.get(j));
+					try
+					{
+						Thread.currentThread().sleep(time1);
+					}
+					catch (Exception exx1)
+					{}
+					System.out.println(dictionary.getPart(i).rus.get(j));
+				}
+				try
+				{
+					Thread.currentThread().sleep(time2);
+				}
+				catch (Exception exx1)
+				{}
+			}
+			
+			
+			//System.out.println(el[0]+"-"+el[1]);
 		}
 		
 	}

@@ -35,6 +35,9 @@ public class Dictionary
 		
 		return szs;
 	}
+	public DictPart getPart(int i){
+		return parts.get(i);
+	}
 
 	@Override
 	public String toString(){
