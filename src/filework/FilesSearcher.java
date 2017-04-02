@@ -19,9 +19,16 @@ public class FilesSearcher
 		for(File b:fls){
 			//System.out.println(b.getName());
 			//System.out.println(b.lastModified());
+			if(b.isDirectory())
+				continue;
 			fNames.add(b.getName());
 			fDirs.add(b.toString());
 			dicts.add(ReadsDictFile.readFileThere(b.toString()));
+		}
+		System.out.print("\nFilenames: "+fNames+"\nNumber of strings: ");
+		
+		for(ArrayList<String> str:dicts){
+			System.out.print(str.size()+" ");
 		}
 		//dicts.add(ReadsDictFile.readFileThere(null));
 	}

@@ -38,6 +38,9 @@ public class Dictionary
 	public DictPart getPart(int i){
 		return parts.get(i);
 	}
+	public int getNumOfParts(){
+		return parts.size();
+	}
 
 	@Override
 	public String toString(){

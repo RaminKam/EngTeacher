@@ -35,6 +35,7 @@ public class DictPart
 			}
 
 		}
+		clearStrings();
 	}
 	public ArrayList<String> eng=new ArrayList <>();
 	public ArrayList<String> rus=new ArrayList <>();
@@ -47,5 +48,11 @@ public class DictPart
 	public int getWordsNumber(){
 		//System.out.println("\n("+eng.size()+")");
 		return eng.size();
+	}
+	private void clearStrings(){
+		for(int i=0;i<eng.size();i++){
+			eng.set(i,eng.get(i).trim());
+			rus.set(i,rus.get(i).trim());
+		}
 	}
 }

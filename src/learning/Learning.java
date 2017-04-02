@@ -12,8 +12,12 @@ public class Learning
 	public Learning(){
 
 	}
-	public ArrayList<int[]> makeShowedSequence(Dictionary dictionary){
+	public ArrayList<int[]> makeShowedSequence(Dictionary dictionary, Integer wordAmount){
+		
 		int seqLen=10;
+		if(wordAmount!=null)
+			seqLen=wordAmount;
+		
 		ArrayList<Integer> ms=dictionary.getAllMetrics();
 		int[] msps=new int[ms.size()];
 		int[] msc=new int[ms.size()];
@@ -42,6 +46,11 @@ public class Learning
 				}
 			}
 		}
+		ArrayList<Integer> mforshow=new ArrayList<>();
+		for(int v=0;v<msc.length;v++){
+			mforshow.add(msc[v]);
+		}
+		System.out.println("\nSorted metrics: "+mforshow);
 
 		//
 		int sumMetrics=0;
@@ -71,8 +80,12 @@ public class Learning
 		int[] indOfPart=new int[realSeqLen];
 		int[] indOfWord=new int[realSeqLen];
 		ArrayList<IndGen> indGens=IndGen.makeGenArr(dictionary.getAllPartSizes());
-		
-		
+		ArrayList<Integer> lensforshow=new ArrayList<>();
+		for(int v=0;v<lens.length;v++){
+			lensforshow.add(lens[v]);
+			
+		}
+		System.out.println("Parts of seq:"+lensforshow);
 		
 		for(int i=0, pi=0;i<realSeqLen && pi <ms.size();i+=lens[pi], pi++){
 			for(int j=0;j<lens[pi]&&(i+j)<realSeqLen;j++){
@@ -97,28 +110,32 @@ public class Learning
 		
 	}
 	public enum LearnType{ONLYENG,ONLYRUS,MIXED};
-	public void rememberWordsCase1(Dictionary dictionary, LearnType sltp){
+	public void rememberWordsCase1(Dictionary dictionary, LearnType sltp, Integer wordAmount){
 	
+		System.out.print("\nNumber of pairs:"+dictionary.getAllPartSizes());
+		System.out.println("\nSum of all pairs:"+dictionary.getNumPairs());
 		LearnType ltp=null;
 		if(sltp==null)
 			ltp=LearnType.ONLYRUS;
 		else 
 			ltp=sltp;
 		
-		ArrayList<int[]> indexes=makeShowedSequence(dictionary);
+		ArrayList<int[]> indexes=makeShowedSequence(dictionary, wordAmount);
+		int k=1;
 		for(int[] el:indexes){
+			System.out.print("("+k+")");
 			int i=el[0];
 			int j=el[1];
 			if(ltp==LearnType.ONLYENG)
 			{
-				System.out.println(dictionary.getPart(i).eng.get(j));
+				System.out.print(dictionary.getPart(i).eng.get(j)+" ");
 				try
 				{
 					Thread.currentThread().sleep(time1);
 				}
 				catch (Exception exx1)
 				{}
-				System.out.print(dictionary.getPart(i).rus.get(j));
+				System.out.println(dictionary.getPart(i).rus.get(j));
 				try
 				{
 					Thread.currentThread().sleep(time2);
@@ -128,7 +145,7 @@ public class Learning
 					
 			}
 			if(ltp==LearnType.ONLYRUS){
-				System.out.print(dictionary.getPart(i).rus.get(j));
+				System.out.print(dictionary.getPart(i).rus.get(j)+" ");
 				try
 				{
 					Thread.currentThread().sleep(time1);
@@ -147,7 +164,7 @@ public class Learning
 				int rann=(int)(Math.random()*100)%2;
 				if (rann == 0)
 				{
-					System.out.print(dictionary.getPart(i).rus.get(j));
+					System.out.print(dictionary.getPart(i).rus.get(j)+" ");
 					
 					try
 					{
@@ -159,7 +176,7 @@ public class Learning
 				}
 				else
 				{
-					System.out.print(dictionary.getPart(i).eng.get(j));
+					System.out.print(dictionary.getPart(i).eng.get(j)+" ");
 					try
 					{
 						Thread.currentThread().sleep(time1);
@@ -175,7 +192,7 @@ public class Learning
 				catch (Exception exx1)
 				{}
 			}
-			
+			k++;
 			
 			//System.out.println(el[0]+"-"+el[1]);
 		}

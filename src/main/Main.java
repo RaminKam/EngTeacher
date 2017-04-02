@@ -10,9 +10,9 @@ import java.io.File;
 
 public class Main
 {
+	static final Integer wordsNumber=10;
 	public static void main(String[] args)
 	{
-		
 		DictPart dp1=null;
 		FilesSearcher fs=new FilesSearcher(null);
 		ArrayList<ArrayList<String>> dictsStrings= fs.getDicts();
@@ -26,14 +26,10 @@ public class Main
 			dictionary.addDictPart(dp);
 		}
 		System.out.println("\n");
-		//System.out.println(dictionary);
 		
-		//dp1=new DictPart(dictsStrings.get(0), null, null);
 		
 		Learning ln=new Learning();
-		ln.rememberWordsCase1(dictionary, Learning.LearnType.MIXED);
-		//ln.genPairs(dp1);
+		ln.rememberWordsCase1(dictionary, Learning.LearnType.MIXED, wordsNumber);
 		
-		//System.out.println("\nend");
 	}
 }
