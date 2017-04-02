@@ -37,7 +37,7 @@ public class Learning
 			{  
 				int bufx;
 
-				if (msc[j - 1] > msc[j])
+				if (msc[j - 1] < msc[j])
 				{
 					bufx = msps[j - 1]; msps[j - 1] = msps[j]; msps[j] = bufx;
 					bufx = msc[j - 1]; msc[j - 1] = msc[j]; msc[j] = bufx;
@@ -81,17 +81,20 @@ public class Learning
 		int[] indOfWord=new int[realSeqLen];
 		ArrayList<IndGen> indGens=IndGen.makeGenArr(dictionary.getAllPartSizes());
 		ArrayList<Integer> lensforshow=new ArrayList<>();
+		ArrayList<Integer> mspsforshow=new ArrayList<>();
 		for(int v=0;v<lens.length;v++){
 			lensforshow.add(lens[v]);
+			mspsforshow.add(msps[v]);
 			
 		}
 		System.out.println("Parts of seq:"+lensforshow);
+		System.out.println("Sorted indexes: "+mspsforshow);
 		
-		for(int i=0, pi=0;i<realSeqLen && pi <ms.size();i+=lens[pi], pi++){
-			for(int j=0;j<lens[pi]&&(i+j)<realSeqLen;j++){
+		for(int i=0, pi=0;i<realSeqLen && pi <ms.size();i+=lens[msps[pi]], pi++){
+			for(int j=0;j<lens[msps[pi]]&&(i+j)<realSeqLen;j++){
 				indOfPart[i+j]=msps[pi];
 				try{
-				indOfWord[i+j]=indGens.get(pi).getInd();
+				indOfWord[i+j]=indGens.get(msps[pi]).getInd();
 				}catch(Exception exx){
 					
 					exx.printStackTrace();
@@ -104,8 +107,11 @@ public class Learning
 		
 		ArrayList<int[]> indexes=new ArrayList();
 		for(int k=0;k<indOfPart.length;k++){
+			
 			indexes.add(new int[]{indOfPart[k],indOfWord[k]});
+			System.out.println("\nk="+k+" i="+indOfPart[k]+" j="+indOfWord[k]);
 		}
+		
 		return indexes;
 		
 	}
