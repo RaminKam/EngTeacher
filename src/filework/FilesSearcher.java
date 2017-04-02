@@ -15,10 +15,10 @@ public class FilesSearcher
 			searchDir=ssearchDir;
 		File constitDir=new File(searchDir);
 		File [] fls=constitDir.listFiles();
-		System.out.println("len="+fls.length);
+		//System.out.println("len="+fls.length);
 		for(File b:fls){
-			System.out.println(b.getName());
-			System.out.println(b.lastModified());
+			//System.out.println(b.getName());
+			//System.out.println(b.lastModified());
 			fNames.add(b.getName());
 			fDirs.add(b.toString());
 			dicts.add(ReadsDictFile.readFileThere(b.toString()));

@@ -4,7 +4,7 @@ import java.io.*;
 import tools.*;
 public class Learning
 {
-	static final int time1=5000;
+	static final int time1=1000;
 	static final int time2=1000;
 	//String fdir="//storage//emulated//0//SimpleNotepad2//dict-[01-02-2016].txt";  //1490126478692.txt";  //dict-[01-02-2016].txt" ;
 	
@@ -13,9 +13,37 @@ public class Learning
 
 	}
 	public ArrayList<int[]> makeShowedSequence(Dictionary dictionary){
-		int seqLen=9;
+		int seqLen=10;
 		ArrayList<Integer> ms=dictionary.getAllMetrics();
+		int[] msps=new int[ms.size()];
+		int[] msc=new int[ms.size()];
+		for(int i=0;i<ms.size();i++){
+			msps[i]=i;
+			msc[i]=ms.get(i);
+		}
 		
+		//
+		
+
+
+
+		for (int i=0; i < ms.size(); i++)
+		{            
+			for (int j = ms.size() - 1; j > i; j--)
+			{  
+				int bufx;
+
+				if (msc[j - 1] > msc[j])
+				{
+					bufx = msps[j - 1]; msps[j - 1] = msps[j]; msps[j] = bufx;
+					bufx = msc[j - 1]; msc[j - 1] = msc[j]; msc[j] = bufx;
+				
+					
+				}
+			}
+		}
+
+		//
 		int sumMetrics=0;
 		for(Integer i:ms){
 			sumMetrics+=i;
@@ -44,20 +72,23 @@ public class Learning
 		int[] indOfWord=new int[realSeqLen];
 		ArrayList<IndGen> indGens=IndGen.makeGenArr(dictionary.getAllPartSizes());
 		
+		
+		
 		for(int i=0, pi=0;i<realSeqLen && pi <ms.size();i+=lens[pi], pi++){
 			for(int j=0;j<lens[pi]&&(i+j)<realSeqLen;j++){
-				indOfPart[i+j]=pi;
+				indOfPart[i+j]=msps[pi];
 				try{
 				indOfWord[i+j]=indGens.get(pi).getInd();
 				}catch(Exception exx){
-					//System.out.println("u");
+					
 					exx.printStackTrace();
-					//break;
+					
 				}
 			}
 			
 		}
 	
+		
 		ArrayList<int[]> indexes=new ArrayList();
 		for(int k=0;k<indOfPart.length;k++){
 			indexes.add(new int[]{indOfPart[k],indOfWord[k]});
@@ -81,12 +112,36 @@ public class Learning
 			if(ltp==LearnType.ONLYENG)
 			{
 				System.out.println(dictionary.getPart(i).eng.get(j));
+				try
+				{
+					Thread.currentThread().sleep(time1);
+				}
+				catch (Exception exx1)
+				{}
 				System.out.print(dictionary.getPart(i).rus.get(j));
+				try
+				{
+					Thread.currentThread().sleep(time2);
+				}
+				catch (Exception exx1)
+				{}
 					
 			}
 			if(ltp==LearnType.ONLYRUS){
 				System.out.print(dictionary.getPart(i).rus.get(j));
+				try
+				{
+					Thread.currentThread().sleep(time1);
+				}
+				catch (Exception exx1)
+				{}
 				System.out.println(dictionary.getPart(i).eng.get(j));
+				try
+				{
+					Thread.currentThread().sleep(time2);
+				}
+				catch (Exception exx1)
+				{}
 			}
 			if(ltp==LearnType.MIXED){
 				int rann=(int)(Math.random()*100)%2;

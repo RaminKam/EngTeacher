@@ -19,8 +19,9 @@ public class Main
 		ArrayList<String> fDirs=fs.getFDirs();
 		ArrayList<String> fNames=fs.getFNames();
 		Dictionary dictionary=new Dictionary();
+		int ms[]=new int[]{30,70};
 		for(int i=0;i<dictsStrings.size();i++){
-			DictPart dp=new DictPart(dictsStrings.get(i),fNames.get(i), fDirs.get(i));
+			DictPart dp=new DictPart(dictsStrings.get(i),fNames.get(i), fDirs.get(i), ms[i]);
 			dictionary.addDictPart(dp);
 		}
 		System.out.println("\n");
@@ -32,6 +33,6 @@ public class Main
 		ln.rememberWordsCase1(dictionary, Learning.LearnType.MIXED);
 		//ln.genPairs(dp1);
 		
-		System.out.println("\nend");
+		//System.out.println("\nend");
 	}
 }

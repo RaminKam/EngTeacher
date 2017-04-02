@@ -11,7 +11,7 @@ public class Dictionary
 		parts.add(dp);
 	}
 	private ArrayList <DictPart> parts=new ArrayList<>();
-	//private int numPairs=0;
+	
 	public int getNumPairs(){
 		ArrayList<Integer> nums=getAllPartSizes();
 		int sum=0;

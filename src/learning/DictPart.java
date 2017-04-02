@@ -3,11 +3,18 @@ import java.util.*;
 
 public class DictPart
 {
-	public DictPart(ArrayList<String> arr,String sname, String sdirStr){
+	public DictPart(ArrayList<String> arr,String sname, String sdirStr, Integer smetric){
+		if(smetric==null)
+		{
+			metric=(int)(Math.random()*1000)%67;
+		}
+		else{
+			metric=smetric;
+		}
 		name=sname;
 		dirStr=sdirStr;
 		String s=new String();
-		System.out.println("\n===");
+		
 		String []spls=null;
 		for(int g=0;g<arr.size();g++){
 			String t=arr.get(g);
@@ -21,7 +28,7 @@ public class DictPart
 
 				for (int v=0;v < spls.length;v++)
 				{
-					System.out.print(v + "-" + "{" + spls[v] + "}");
+					//System.out.print(v + "-" + "{" + spls[v] + "}");
 				}
 				eng.add(spls[0]);
 				rus.add(spls[1]);
@@ -33,7 +40,7 @@ public class DictPart
 	public ArrayList<String> rus=new ArrayList <>();
 	public String dirStr=new String();
 	String name="";
-	int metric=(int)(Math.random()*1000)%67;
+	Integer metric=null;
 	public int getMetric(){
 		return metric;
 	}

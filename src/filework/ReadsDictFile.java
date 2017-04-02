@@ -24,7 +24,7 @@ public class ReadsDictFile
 				//System.out.print((char)ch);
 				if((char)ch=='\n'){
 					arr.add(strfor);
-					System.out.println(":"+strfor);
+					//System.out.println(":"+strfor);
 					strfor=new String();
 				}else {
 					strfor=strfor+(char)ch;
@@ -32,15 +32,15 @@ public class ReadsDictFile
 				ch=fstr.read();
 			}
 			arr.add(strfor);
-			System.out.println(":"+strfor+":");
-			System.out.println("size="+arr.size());
-			for(int g=0;g<arr.size();g++){
-				System.out.print(arr.get(g));
-			}
+			//System.out.println(":"+strfor+":");
+			//System.out.println("size="+arr.size());
+			//for(int g=0;g<arr.size();g++){
+				//System.out.print(arr.get(g));
+			//}
 			//System.out.println();
-			for(int y=0;y<arr.get(1).length();y++){
+			//for(int y=0;y<arr.get(1).length();y++){
 				//System.out.println((int)arr.get(1).charAt(y));
-			}
+			//}
 			//System.out.println("\nhere"+arr.get(1).length());
 			fstr.close();
 		}catch(Exception ex){
