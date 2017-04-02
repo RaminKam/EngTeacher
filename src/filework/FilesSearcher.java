@@ -34,6 +34,34 @@ public class FilesSearcher
 	public ArrayList<String> getFNames(){
 		return fNames;
 	}
+	public ArrayList<Integer> getMetrics(){
+		ArrayList<Integer> arr=new ArrayList<>();
+		try
+		{
+			for (String str:fNames)
+			{
+				arr.add(parseFileName(str));
+			}
+		}
+		catch (Exception xx)
+		{
+			xx.printStackTrace();
+		}
+		return arr;
+	}
+	private int parseFileName(String fileName) throws Exception{
+		String metrStr=new String();
+		char ch=fileName.charAt(0);
+		for(int i=1;ch!='-';i++){
+			metrStr+=ch;
+			ch=fileName.charAt(i);
+			
+		}
+		if(metrStr.length()==0)
+			throw new Exception("not correct file name");
+		int metric=Integer.parseInt(metrStr);
+		return metric;
+	}
 	
 	
 }

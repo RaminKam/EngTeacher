@@ -19,9 +19,10 @@ public class Main
 		ArrayList<String> fDirs=fs.getFDirs();
 		ArrayList<String> fNames=fs.getFNames();
 		Dictionary dictionary=new Dictionary();
-		int ms[]=new int[]{30,70};
+		ArrayList<Integer> metrics=fs.getMetrics();
+		
 		for(int i=0;i<dictsStrings.size();i++){
-			DictPart dp=new DictPart(dictsStrings.get(i),fNames.get(i), fDirs.get(i), ms[i]);
+			DictPart dp=new DictPart(dictsStrings.get(i),fNames.get(i), fDirs.get(i), metrics.get(i));
 			dictionary.addDictPart(dp);
 		}
 		System.out.println("\n");
