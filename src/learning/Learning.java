@@ -4,8 +4,8 @@ import java.io.*;
 import tools.*;
 public class Learning
 {
-	static final int time1=1000;
-	static final int time2=1000;
+	static final int time1=4000;
+	static final int time2=1500;
 	//String fdir="//storage//emulated//0//SimpleNotepad2//dict-[01-02-2016].txt";  //1490126478692.txt";  //dict-[01-02-2016].txt" ;
 	
 	
@@ -109,7 +109,7 @@ public class Learning
 		for(int k=0;k<indOfPart.length;k++){
 			
 			indexes.add(new int[]{indOfPart[k],indOfWord[k]});
-			System.out.println("\nk="+k+" i="+indOfPart[k]+" j="+indOfWord[k]);
+			//System.out.println("\nk="+k+" i="+indOfPart[k]+" j="+indOfWord[k]);
 		}
 		
 		return indexes;

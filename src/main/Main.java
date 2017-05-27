@@ -10,7 +10,7 @@ import java.io.File;
 
 public class Main
 {
-	static final Integer wordsNumber=10;
+	static final Integer wordsNumber=50;
 	public static void main(String[] args)
 	{
 		DictPart dp1=null;
