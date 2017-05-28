@@ -10,11 +10,14 @@ import java.io.File;
 
 public class Main
 {
-	static final Integer wordsNumber=50;
+	public static final Integer WORDSNUMBER=50;
+	public static final int TIME1=Learning.CUSTOMTIME1;
+	public static final int TIME2=Learning.CUSTOMTIME2;
+	public static final String DICTFILESDIR=FilesSearcher.CUSTDIR;
 	public static void main(String[] args)
 	{
-		DictPart dp1=null;
-		FilesSearcher fs=new FilesSearcher(null);
+		//DictPart dp1=null;
+		FilesSearcher fs=new FilesSearcher(DICTFILESDIR);
 		ArrayList<ArrayList<String>> dictsStrings= fs.getDicts();
 		ArrayList<String> fDirs=fs.getFDirs();
 		ArrayList<String> fNames=fs.getFNames();
@@ -28,8 +31,8 @@ public class Main
 		System.out.println("\n");
 		
 		
-		Learning ln=new Learning();
-		ln.rememberWordsCase1(dictionary, Learning.LearnType.MIXED, wordsNumber);
+		Learning ln=new Learning(TIME1,TIME2);
+		ln.rememberWordsCase1(dictionary, Learning.LearnType.MIXED, WORDSNUMBER);
 		
 	}
 }

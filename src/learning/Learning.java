@@ -4,12 +4,18 @@ import java.io.*;
 import tools.*;
 public class Learning
 {
-	static final int time1=4000;
-	static final int time2=1500;
+	public static final int CUSTOMTIME1=4000;
+	public static final int CUSTOMTIME2=1500;
+	int time1=CUSTOMTIME1;//время между выводом первого и второго слова пары
+	int time2=CUSTOMTIME2;//время между выводами пар
 	//String fdir="//storage//emulated//0//SimpleNotepad2//dict-[01-02-2016].txt";  //1490126478692.txt";  //dict-[01-02-2016].txt" ;
-	
-	
 	public Learning(){
+		
+	}
+	
+	public Learning(int ttime1, int ttime2){
+		time1=ttime1;
+		time2=ttime2;
 
 	}
 	public ArrayList<int[]> makeShowedSequence(Dictionary dictionary, Integer wordAmount){
@@ -25,12 +31,7 @@ public class Learning
 			msps[i]=i;
 			msc[i]=ms.get(i);
 		}
-		
-		//
-		
-
-
-
+	
 		for (int i=0; i < ms.size(); i++)
 		{            
 			for (int j = ms.size() - 1; j > i; j--)
@@ -41,8 +42,6 @@ public class Learning
 				{
 					bufx = msps[j - 1]; msps[j - 1] = msps[j]; msps[j] = bufx;
 					bufx = msc[j - 1]; msc[j - 1] = msc[j]; msc[j] = bufx;
-				
-					
 				}
 			}
 		}
@@ -101,10 +100,7 @@ public class Learning
 					
 				}
 			}
-			
 		}
-	
-		
 		ArrayList<int[]> indexes=new ArrayList();
 		for(int k=0;k<indOfPart.length;k++){
 			

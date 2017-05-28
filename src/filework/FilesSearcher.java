@@ -6,7 +6,8 @@ import java.util.*;
 import java.io.*;
 public class FilesSearcher
 {
-	String searchDir="//storage//emulated//0//SimpleNotepad2";//директория, где должны находиться все части словаря
+	public static final String CUSTDIR="//storage//emulated//0//SimpleNotepad2";
+	String searchDir=CUSTDIR;//директория, где должны находиться все части словаря
 	ArrayList<ArrayList<String>> dicts=new ArrayList<>();
 	ArrayList<String> fDirs=new ArrayList<>();
 	ArrayList<String> fNames=new ArrayList<>();
