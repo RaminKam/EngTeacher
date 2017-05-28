@@ -14,6 +14,9 @@ public class Main
 	public static final int TIME1=Learning.CUSTOMTIME1;
 	public static final int TIME2=Learning.CUSTOMTIME2;
 	public static final String DICTFILESDIR=FilesSearcher.CUSTDIR;
+	public static final boolean SHUFMODE=false;
+	
+
 	public static void main(String[] args)
 	{
 		//DictPart dp1=null;
@@ -31,7 +34,7 @@ public class Main
 		System.out.println("\n");
 		
 		
-		Learning ln=new Learning(TIME1,TIME2);
+		Learning ln=new Learning(TIME1,TIME2,SHUFMODE);
 		ln.rememberWordsCase1(dictionary, Learning.LearnType.MIXED, WORDSNUMBER);
 		
 	}

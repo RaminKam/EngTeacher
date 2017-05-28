@@ -9,13 +9,16 @@ public class Learning
 	int time1=CUSTOMTIME1;//время между выводом первого и второго слова пары
 	int time2=CUSTOMTIME2;//время между выводами пар
 	//String fdir="//storage//emulated//0//SimpleNotepad2//dict-[01-02-2016].txt";  //1490126478692.txt";  //dict-[01-02-2016].txt" ;
+	
+	boolean shufmode=true;// if true, makeshowedsequence returns shuffled array, another - array consist grouped parts
 	public Learning(){
 		
 	}
 	
-	public Learning(int ttime1, int ttime2){
+	public Learning(int ttime1, int ttime2,boolean tshufmode){
 		time1=ttime1;
 		time2=ttime2;
+		shufmode=tshufmode;
 
 	}
 	public ArrayList<int[]> makeShowedSequence(Dictionary dictionary, Integer wordAmount){
@@ -107,7 +110,9 @@ public class Learning
 			indexes.add(new int[]{indOfPart[k],indOfWord[k]});
 			//System.out.println("\nk="+k+" i="+indOfPart[k]+" j="+indOfWord[k]);
 		}
-		
+		if(shufmode==true){
+			Collections.shuffle(indexes);
+		}
 		return indexes;
 		
 	}
