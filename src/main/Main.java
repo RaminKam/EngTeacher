@@ -10,7 +10,7 @@ import java.io.File;
 
 public class Main
 {
-	public static final Integer WORDSNUMBER=50;
+	public static final Integer WORDSNUMBER=5000;
 	public static final int TIME1=Learning.CUSTOMTIME1;
 	public static final int TIME2=Learning.CUSTOMTIME2;
 	public static final String DICTFILESDIR=FilesSearcher.CUSTDIR;
